@@ -1,9 +1,9 @@
 import React from "react";
 
-const Die = ({ value }) => {
+const Die = ({ value, isHeld, holdDice, id }) => {
   return (
-    <section className="dieGroup">
-      <h1 className="die">{value}</h1>
+    <section className="dieGroup" onClick={holdDice}>
+      <h1 className={isHeld ? "hold die" : "die"}>{value}</h1>
     </section>
   );
 };
