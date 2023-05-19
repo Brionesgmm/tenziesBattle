@@ -13,7 +13,7 @@ main {
   border-radius: 10px;
   text-align: center;
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 450px;
   padding: 5rem 0;
   display: flex;
   flex-direction: column;
@@ -23,7 +23,7 @@ main {
 
 .dices {
   display: grid;
-  grid-template: auto auto / repeat(5, 1fr);
+  grid-template: auto auto / repeat(6, 1fr);
   gap: 20px;
   margin-top: 2rem;
 }
@@ -72,9 +72,14 @@ main {
   font-weight: 400;
   margin-top: 0;
   text-align: center;
+  padding: 0 1rem;
 }
 
-@media (max-width: 400px) {
+.turns {
+  margin-top: 1rem;
+}
+
+@media (max-width: 450px) {
   .dices {
     grid-template-columns: repeat(2, 1fr);
   }

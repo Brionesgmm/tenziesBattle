@@ -7,6 +7,7 @@ import { useWindowSize } from "react-use";
 const App = () => {
   const [dice, setDice] = useState(allNewDice);
   const [tenzies, setTenzies] = useState(false);
+  const [turns, setTurns] = useState(0);
 
   useEffect(() => {
     const allHeld = dice.every((die) => die.isHeld);
@@ -29,7 +30,7 @@ const App = () => {
   function allNewDice() {
     let newDice = [];
 
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 12; i++) {
       newDice.push(generateNewDie());
     }
     return newDice;
@@ -42,9 +43,11 @@ const App = () => {
           return die.isHeld ? die : generateNewDie();
         })
       );
+      setTurns((prevCount) => prevCount + 1);
     } else {
       setTenzies(false);
       setDice(allNewDice());
+      setTurns(0);
     }
   }
 
@@ -76,11 +79,12 @@ const App = () => {
   return (
     <main>
       {tenzies && <Confetti width={width} height={height} />}
-      <h1 className="title">Tenzies</h1>
+      <h1 className="title">Twelvezies</h1>
       <p className="instructions">
         Roll until all dice are the same. Click each die to freeze it at its
         current value between rolls.
       </p>
+      <h2 className="turns">Number of turns: {turns}</h2>
       <section className="dices">{diceElements}</section>
       <button className="roll" onClick={roll}>
         {tenzies ? "New Game" : "Roll"}
